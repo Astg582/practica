@@ -50,7 +50,7 @@ int foo(int* arr, int n){
 		}
 	}else if(pmin > pmax){
 		 for(int* p = pmax; p != pmin; ++p){
-                        sum += std::pow(*p, *p);
+                        sum += std::pow(*p, 2);
                         ++count;
                 }
 
