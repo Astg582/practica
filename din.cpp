@@ -1,16 +1,17 @@
 #include<iostream>
 
-int* arrAdd (int*, int, int);
-int* arrSub(int*, int, int);
-//void manipul( int*, int&);
+int* push (int*, int, int);
+int* pop(int*, int, int);
+
 
 
 int main()
 {
 	int n = 0;
-
+	do{
 	std::cout << " enter to arr size " << std::endl;
 	std::cin >> n;
+	}while( n > 100 || n < 2);
 	
 	int* arr = new int[n];	
 
@@ -22,25 +23,30 @@ int main()
 	
 
 	int e = 0;
-	do{
+	while (e < 100 )
+	{
 	std::cout << " enter to positiv number if you want to add to the array, or negativ number if you want to sub" << std::endl;
 	std::cin >> e;
 
 
 	if(e < 0 && e > (-n)){
 
-		arr = (arrSub(arr, n, e));
+		arr = (pop(arr, n, e));
 		n = n + e;
 
-	} 
+	}else if(e < (-n) && e < 0){
+		break;
+	}
+
+
 
 	if( e > 0 && e < 100){
 
-		arr = (arrAdd(arr, n, e));
+		arr = (push(arr, n, e));
 		n = n + e;
 	}
 
-	} while (e != 100);
+	} 
        
 	
       
@@ -57,7 +63,7 @@ int main()
 }
 
 
-int* arrSub(int* arr, int n, int subu)
+int* pop(int* arr, int n, int subu)
 {
 	int* arrSu = new int[n + subu];
 	for(int i = 0; i < (n + subu); ++i)
@@ -72,17 +78,20 @@ int* arrSub(int* arr, int n, int subu)
 }
 
 
-int* arrAdd(int* arr, int n, int adda) 
+int* push(int* arr, int n, int adda) 
 {
 	int* arrAd = new int[n + adda];
-	for(int i = 0; i < n; ++i) 
+	
+	for(int i = 0; i < n; ++i)
 	{
-		arrAd[i] = arr[i];
+		  arrAd[i] = arr[i];
+
 	}
 
 	std::cout << "enter to new value" << std::endl;
 	for(int i = n; i < (n + adda); ++i)
 	{
+
 		std::cin >> arrAd[i];
 	}
 	
