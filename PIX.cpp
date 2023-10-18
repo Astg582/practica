@@ -2,7 +2,7 @@
 
 
 enum color{
-    RED = 1,
+    RED = 'a',
     BLEAK ,
     WHITE,
     BLUE ,
@@ -55,7 +55,7 @@ pixel** matr(int s)
         {
             img[i][j].x_cord = i;
             img[i][j].y_cord = j;
-            img[i][j].col = (color) (rand() % 7);
+            img[i][j].col = (color) (rand() % 7 + 97);
         }
     }
     return img;
@@ -67,7 +67,7 @@ void print(pixel** pix, int s)
     {
         for(int j = 0; j < s; ++j)
         {
-            std::cout << pix[i][j].col << ' ';
+            std::cout << (char) pix[i][j].col << ' ';
         }
         std::cout << std::endl;
     }
