@@ -5,7 +5,7 @@ enum color{
     BLUE = 'b',
     BLEACK = 'c',
     ORANGE = 'd',
-    YRLLOW
+    YRLLOW = 0
 };
 
 struct pix{
@@ -19,6 +19,7 @@ void print(pix**, int);
 void kes(pix**, int);
 void sec_d(pix**, int);
 void del(pix**, int);
+void rub(pix**, int);
 
 int main()
 {
@@ -28,7 +29,7 @@ int main()
     pix** pixel = M_aloc(s);
     print(pixel, s);
 
-    sec_d(pixel, s);
+    rub(pixel, s);
     std::cout << " this is sec_d revers image" << std::endl;
     print(pixel,s);
     
@@ -91,6 +92,47 @@ void sec_d(pix** pixel, int s)
             std::swap(pixel[i][j], pixel[s-i-1][s-j-1]);
         }
     }
+}
+
+
+
+void rub(pix** pixel, int s)
+{
+
+	for(int i = 0; i < s; ++i)
+	{
+		if(s % 2 == 0){
+		for(int j = 0; j < s; ++j)
+		{
+			if(j <= i && i < s/2)
+			{
+				pixel[i - j][j].col = (color) 97;
+		
+			}
+			if(j - (s / 2) >= i)
+			{
+				pixel[i][j].col = (color) 97;
+
+		            }else if(i < s/2 && j != 0){
+				    pixel[i][j].col = (color) 98;
+			    }
+			if(i >= s/2)
+			{
+				if(j + (s / 2) <= i)
+				{
+					 pixel[i][j].col = (color) 'a';
+				}
+				if(j >= (s - i + 2) + ((s - i) / 2))
+				{
+					 pixel[j][i].col = (color) 'a';
+				}
+				else if((i !=  s - 1) && !(j + (s  / 2) <= i)){
+                                    pixel[i][j].col = (color) 98;
+                            	}
+			}
+		}
+		}
+	}
 }
 
 void del(pix** pixel, int s)
