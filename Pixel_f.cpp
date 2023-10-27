@@ -92,6 +92,12 @@ void sec_d(pix** pixel, int s)
             std::swap(pixel[i][j], pixel[s-i-1][s-j-1]);
         }
     }
+	if(s & 1){
+		int mid = s/2;
+			for(int j = 0; j < s / 2); ++j){
+				std::swap(pixel[mid][s-j-1], pixel[mid][s-1-j]);
+			}
+	}
 }
 
 
